@@ -1,0 +1,185 @@
+:root {
+  --bg: #060606;
+  --panel: #0d0d0d;
+  --accent: #e10600;
+  --muted: #bdbdbd;
+  --glass: rgba(255, 255, 255, 0.05);
+  --gap: 14px;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: linear-gradient(180deg, #020202, #0a0a0a);
+  color: #fff;
+  line-height: 1.5;
+  padding-bottom: 36px;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 22px;
+}
+
+/* Header */
+.site-header {
+  padding: 28px 0 16px;
+  background: linear-gradient(90deg, rgba(225, 6, 0, 0.15), transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.logo {
+  margin: 0;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  font-size: 26px;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Search */
+.controls {
+  margin-top: 14px;
+}
+.controls input[type="search"] {
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
+}
+.controls input[type="search"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(225, 6, 0, 0.3);
+}
+
+/* Card */
+.card {
+  background: var(--glass);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  padding: 18px;
+  margin-top: 22px;
+}
+
+/* Table Desktop */
+.table-wrap { overflow: auto; }
+
+.movies-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.movies-table thead th {
+  text-align: left;
+  padding: 14px 12px;
+  font-size: 13px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.movies-table tbody td {
+  padding: 14px 12px;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.movies-table tbody td:first-child {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---------------------- */
+/* 📱 NUEVO DISEÑO MÓVIL */
+/* ---------------------- */
+@media (max-width: 720px) {
+
+  .container { padding: 14px; }
+
+  .movies-table {
+    min-width: 0;
+    border: 0;
+  }
+
+  .movies-table thead {
+    display: none;
+  }
+
+  /* Cada película se vuelve una tarjeta */
+  .movies-table tbody tr {
+    display: block;
+    margin-bottom: 18px;
+    padding: 16px;
+    background: linear-gradient(180deg, #111, #0a0a0a);
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Efecto de borde Marvel */
+  .movies-table tbody tr::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(225,6,0,0.5), transparent 60%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+  }
+
+  .movies-table tbody td {
+    display: block;
+    border: 0;
+    padding: 6px 0;
+    font-size: 15px;
+  }
+
+  /* Etiquetas */
+  .movies-table tbody td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  /* Número */
+  .movies-table tbody td:first-child {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--accent);
+  }
+}
+
+/* Footer */
+.site-footer {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
